@@ -21,12 +21,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Router
-const userRouter = require("./router/user-router");
+const userRouter = require("./router/userRouter");
+const homepageRouter = require("./router/homePageRouter");
 //Models
 
 //Middleware
 app.use("/", userRouter);
 app.use("/user", userRouter);
+app.use("/homePage", homepageRouter);
 
 sequelize
   .sync()

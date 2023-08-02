@@ -21,11 +21,11 @@ function login() {
   };
 
   axios
-    .post("http://localhost:4000/user/login", loginDetails)
+    .post("http://localhost:3000/user/login", loginDetails)
     .then((result) => {
       alert(result.data.message);
       localStorage.setItem("token", result.data.token);
-      window.location.href = "/";
+      window.location.href = "/homePage";
     })
     .catch((error) => {
       if (error.response) {

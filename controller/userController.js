@@ -1,6 +1,6 @@
 const path = require("path");
 const bcrypt = require("bcrypt");
-const User = require("../models/user-model");
+const User = require("../models/userModel");
 
 const jwt = require("jsonwebtoken");
 const sequelize = require("../util/database");
