@@ -104,5 +104,17 @@ async function getMessages() {
     }
 }
 
+// setInterval(() => {
+//     getMessages();
+// }, 1000);
+
+window.setInterval(async () => {
+    try{
+      getMessages()
+    } catch(err){
+        console.log(err)
+    }
+  }, 1000)
+
 messageSendBtn.addEventListener("click", messageSend);
 document.addEventListener("DOMContentLoaded", getMessages);
