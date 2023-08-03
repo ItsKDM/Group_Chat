@@ -42,7 +42,7 @@ async function messageSend() {
             return alert("Select group to send the message");
         }
         const res = await axios.post(
-            `http://13.49.230.253:3000/chat/sendMessage/`,
+            `http://localhost:3000/chat/sendMessage/`,
             {
                 message: message,
                 groupName: groupName,
@@ -72,7 +72,7 @@ function decodeToken(token) {
 
 async function getMessages() {
     try {
-        // const res = await axios.get("http://13.49.230.253:3000/chat/getMessages");
+        // const res = await axios.get("http://localhost:3000/chat/getMessages");
         const groupName = localStorage.getItem("groupName");
         if (!groupName || groupName == "") {
             return alert("Select group to get the message");
@@ -87,7 +87,7 @@ async function getMessages() {
             param = 0;
         }
         const res = await axios.get(
-            `http://13.49.230.253:3000/chat/getMessages?param=${param}&groupName=${groupName}`
+            `http://localhost:3000/chat/getMessages?param=${param}&groupName=${groupName}`
         );
         const token = localStorage.getItem("token");
         const decodedToken = decodeToken(token);
