@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -16,6 +17,7 @@ dotenv.config();
 
 const sequelize = require("./util/database");
 
+app.use(cors());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -30,6 +32,9 @@ const User = require("./models/userModel");
 const Chat = require("./models/chatModel");
 const Group = require("./models/groupModel");
 const UserGroup= require("./models/userGroup");
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, `views/${req.url}`));
+});
 
 User.hasMany(Chat, { onDelete: "CASCADE", hooks: true});
 

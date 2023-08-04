@@ -1,4 +1,5 @@
 const path = require("path");
+const cors = require("cors");
 const User = require("../models/userModel");
 const Chat = require("../models/chatModel");
 const Group = require("../models/groupModel");
