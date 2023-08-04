@@ -3,7 +3,7 @@ const messageSendBtn = document.getElementById("messageSendBtn");
 const chatBoxBody = document.getElementById("chatBoxBody");
 const uiGroup = document.getElementById("groups");
 const groupNameHeading = document.getElementById("groupNameHeading");
-const socket = io("http://localhost:5000");
+const socket = io("http:13.48.135.228:5000");
 socket.on("data", (data) => {
     console.log(data);
 });
@@ -47,7 +47,7 @@ async function messageSend() {
             return alert("Select group to send the message");
         }
         const res = await axios.post(
-            `http://localhost:3000/chat/sendMessage/`,
+            `http:13.48.135.228:3000/chat/sendMessage/`,
             {
                 message: message,
                 groupName: groupName,
