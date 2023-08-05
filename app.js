@@ -31,12 +31,12 @@ const groupRouter = require("./router/groupRouter");
 const User = require("./models/userModel");
 const Chat = require("./models/chatModel");
 const Group = require("./models/groupModel");
-const UserGroup= require("./models/userGroup");
+const UserGroup = require("./models/userGroup");
 // app.use((req, res) => {
 //   res.sendFile(path.join(__dirname, `views/${req.url}`));
 // });
 
-User.hasMany(Chat, { onDelete: "CASCADE", hooks: true});
+User.hasMany(Chat, { onDelete: "CASCADE", hooks: true });
 
 Chat.belongsTo(User);
 Chat.belongsTo(Group);
@@ -56,8 +56,11 @@ app.use("/homePage", homepageRouter);
 app.use("/chat", chatRouter);
 app.use("/group", groupRouter);
 
+const job = require("./jobs/cron");
+job.start();
+
 sequelize
-  .sync()
+  .sync({ force: true })
   .then(() => {
     app.listen(process.env.PORT || 3000);
   })
